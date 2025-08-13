@@ -1,5 +1,6 @@
 package com.tallycounter
 
+import android.view.KeyEvent
 import com.facebook.react.ReactActivity
 import com.facebook.react.ReactActivityDelegate
 import com.facebook.react.defaults.DefaultNewArchitectureEntryPoint.fabricEnabled
@@ -19,4 +20,18 @@ class MainActivity : ReactActivity() {
    */
   override fun createReactActivityDelegate(): ReactActivityDelegate =
       DefaultReactActivityDelegate(this, mainComponentName, fabricEnabled)
+
+  override fun onKeyDown(keyCode: Int, event: KeyEvent): Boolean {
+    when (keyCode) {
+      KeyEvent.KEYCODE_VOLUME_UP -> {
+        VolumeButtonModule.instance?.sendVolumeUpEvent()
+        return true
+      }
+      KeyEvent.KEYCODE_VOLUME_DOWN -> {
+        VolumeButtonModule.instance?.sendVolumeDownEvent()
+        return true
+      }
+    }
+    return super.onKeyDown(keyCode, event)
+  }
 }
