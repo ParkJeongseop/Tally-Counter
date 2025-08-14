@@ -2,7 +2,9 @@
   "permissions": {
     "allow": [
       "Bash(npm install)",
-      "Bash(npx react-native:*)"
+      "Bash(npx react-native:*)",
+      "Bash(bundle exec pod:*)",
+      "Bash(pod install:*)"
     ],
     "deny": [],
     "ask": []

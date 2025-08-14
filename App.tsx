@@ -7,7 +7,6 @@ import {
   TouchableOpacity,
   View,
   DeviceEventEmitter,
-  NativeModules,
   Platform,
   Vibration,
 } from 'react-native';
@@ -16,34 +15,32 @@ function App() {
   const [count, setCount] = useState(0);
 
   useEffect(() => {
-    if (Platform.OS === 'android') {
-      console.log('Setting up volume button listeners');
-      
-      const volumeUpListener = DeviceEventEmitter.addListener('VolumeUp', () => {
-        console.log('Volume Up pressed');
-        setCount(prev => {
-          const newCount = prev + 1;
-          console.log('Count increased to:', newCount);
-          return newCount;
-        });
-        Vibration.vibrate(10);
+    console.log('Setting up volume button listeners for', Platform.OS);
+    
+    const volumeUpListener = DeviceEventEmitter.addListener('VolumeUp', () => {
+      console.log('Volume Up pressed');
+      setCount(prev => {
+        const newCount = prev + 1;
+        console.log('Count increased to:', newCount);
+        return newCount;
       });
+      Vibration.vibrate(10);
+    });
 
-      const volumeDownListener = DeviceEventEmitter.addListener('VolumeDown', () => {
-        console.log('Volume Down pressed');
-        setCount(prev => {
-          const newCount = Math.max(0, prev - 1);
-          console.log('Count decreased to:', newCount);
-          return newCount;
-        });
-        Vibration.vibrate(10);
+    const volumeDownListener = DeviceEventEmitter.addListener('VolumeDown', () => {
+      console.log('Volume Down pressed');
+      setCount(prev => {
+        const newCount = Math.max(0, prev - 1);
+        console.log('Count decreased to:', newCount);
+        return newCount;
       });
+      Vibration.vibrate(10);
+    });
 
-      return () => {
-        volumeUpListener.remove();
-        volumeDownListener.remove();
-      };
-    }
+    return () => {
+      volumeUpListener.remove();
+      volumeDownListener.remove();
+    };
   }, []);
 
   const increment = () => {
