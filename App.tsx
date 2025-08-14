@@ -6,10 +6,13 @@ import {
   Text,
   TouchableOpacity,
   View,
-  DeviceEventEmitter,
   Platform,
   Vibration,
+  NativeModules,
+  NativeEventEmitter,
 } from 'react-native';
+
+const { VolumeManager } = NativeModules;
 
 function App() {
   const [count, setCount] = useState(0);
@@ -17,45 +20,65 @@ function App() {
   useEffect(() => {
     console.log('Setting up volume button listeners for', Platform.OS);
     
-    const volumeUpListener = DeviceEventEmitter.addListener('VolumeUp', () => {
-      console.log('Volume Up pressed');
-      setCount(prev => {
-        const newCount = prev + 1;
-        console.log('Count increased to:', newCount);
-        return newCount;
+    if (VolumeManager) {
+      const volumeManagerEmitter = new NativeEventEmitter(VolumeManager);
+      
+      const volumeUpListener = volumeManagerEmitter.addListener('RNVMEventVolume', (data) => {
+        console.log('Volume changed:', data);
+        if (data.volume > 0.5) {
+          console.log('Volume Up detected');
+          setCount(prev => {
+            const newCount = prev + 1;
+            console.log('Count increased to:', newCount);
+            return newCount;
+          });
+          Vibration.cancel();
+          Vibration.vibrate(1);
+          setTimeout(() => {
+            VolumeManager.setVolume(0.5);
+          }, 10);
+        } else if (data.volume < 0.5) {
+          console.log('Volume Down detected');
+          setCount(prev => {
+            const newCount = Math.max(0, prev - 1);
+            console.log('Count decreased to:', newCount);
+            return newCount;
+          });
+          Vibration.cancel();
+          Vibration.vibrate(1);
+          setTimeout(() => {
+            VolumeManager.setVolume(0.5);
+          }, 10);
+        }
       });
-      Vibration.vibrate(10);
-    });
 
-    const volumeDownListener = DeviceEventEmitter.addListener('VolumeDown', () => {
-      console.log('Volume Down pressed');
-      setCount(prev => {
-        const newCount = Math.max(0, prev - 1);
-        console.log('Count decreased to:', newCount);
-        return newCount;
-      });
-      Vibration.vibrate(10);
-    });
+      VolumeManager.setVolume(0.5);
+      if (Platform.OS === 'ios' && VolumeManager.hideVolumeView) {
+        VolumeManager.hideVolumeView();
+      }
 
-    return () => {
-      volumeUpListener.remove();
-      volumeDownListener.remove();
-    };
+      return () => {
+        volumeUpListener.remove();
+      };
+    }
   }, []);
 
   const increment = () => {
     setCount(count + 1);
-    Vibration.vibrate(10);
+    Vibration.cancel();
+    Vibration.vibrate(1);
   };
 
   const decrement = () => {
     setCount(Math.max(0, count - 1));
-    Vibration.vibrate(10);
+    Vibration.cancel();
+    Vibration.vibrate(1);
   };
 
   const reset = () => {
     setCount(0);
-    Vibration.vibrate(20);
+    Vibration.cancel();
+    Vibration.vibrate(5);
   };
 
   return (

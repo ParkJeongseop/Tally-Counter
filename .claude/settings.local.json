@@ -4,7 +4,11 @@
       "Bash(npm install)",
       "Bash(npx react-native:*)",
       "Bash(bundle exec pod:*)",
-      "Bash(pod install:*)"
+      "Bash(pod install:*)",
+      "Bash(rm:*)",
+      "Bash(npm install:*)",
+      "Bash(pod install:*)",
+      "Bash(npm uninstall:*)"
     ],
     "deny": [],
     "ask": []
