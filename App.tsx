@@ -12,11 +12,42 @@ import {
   NativeEventEmitter,
   DeviceEventEmitter,
 } from 'react-native';
+import AsyncStorage from '@react-native-async-storage/async-storage';
 
 const { VolumeManager } = NativeModules;
+const STORAGE_KEY = '@tally_counter_value';
 
 function App() {
   const [count, setCount] = useState(0);
+
+  // Load saved count on app start
+  useEffect(() => {
+    const loadCount = async () => {
+      try {
+        const savedCount = await AsyncStorage.getItem(STORAGE_KEY);
+        if (savedCount !== null) {
+          setCount(parseInt(savedCount, 10));
+          console.log('Loaded saved count:', savedCount);
+        }
+      } catch (error) {
+        console.error('Error loading count:', error);
+      }
+    };
+    loadCount();
+  }, []);
+
+  // Save count whenever it changes
+  useEffect(() => {
+    const saveCount = async () => {
+      try {
+        await AsyncStorage.setItem(STORAGE_KEY, count.toString());
+        console.log('Saved count:', count);
+      } catch (error) {
+        console.error('Error saving count:', error);
+      }
+    };
+    saveCount();
+  }, [count]);
 
   useEffect(() => {
     console.log('Setting up volume button listeners for', Platform.OS);
