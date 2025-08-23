@@ -1,97 +1,145 @@
-This is a new [**React Native**](https://reactnative.dev) project, bootstrapped using [`@react-native-community/cli`](https://github.com/react-native-community/cli).
+# Tally Counter
 
-# Getting Started
+A simple and elegant tally counter app built with React Native. Count anything using on-screen buttons or hardware volume buttons.
 
-> **Note**: Make sure you have completed the [Set Up Your Environment](https://reactnative.dev/docs/set-up-your-environment) guide before proceeding.
+## Features
 
-## Step 1: Start Metro
+- 📱 Clean, modern UI with gradient design
+- 🔊 Hardware volume button support (increment/decrement)
+- 💾 Automatic save/restore of count value
+- 📳 Haptic feedback on button press
+- 🎯 Safe area support for all devices
+- 🌐 Cross-platform (iOS & Android)
 
-First, you will need to run **Metro**, the JavaScript build tool for React Native.
+## Tech Stack
 
-To start the Metro dev server, run the following command from the root of your React Native project:
+- **React Native** 0.76.6
+- **TypeScript** - Type safety and better DX
+- **AsyncStorage** - Persistent data storage
+- **React Native Safe Area Context** - Handle device safe areas
+- **Custom Native Modules** - Volume button integration
 
-```sh
-# Using npm
-npm start
+## Project Structure
 
-# OR using Yarn
-yarn start
+```
+src/
+├── components/           # Reusable UI components
+│   ├── Header.tsx       # App header with title
+│   ├── CounterDisplay.tsx # Main counter display
+│   └── ControlButtons.tsx # Increment/decrement/reset buttons
+├── hooks/               # Custom React hooks
+│   ├── useCounter.ts    # Counter logic & persistence
+│   └── useVolumeButtons.ts # Volume button handling
+├── constants/           # App constants
+│   └── storage.ts       # Storage keys
+├── styles/              # Styling utilities
+│   └── colors.ts        # Color palette
+└── screens/             # Screen components
+    └── CounterScreen.tsx # Main counter screen
 ```
 
-## Step 2: Build and run your app
+## Architecture Decisions
 
-With Metro running, open a new terminal window/pane from the root of your React Native project, and use one of the following commands to build and run your Android or iOS app:
+### Component-Based Architecture
+- **Separation of Concerns**: Each component has a single responsibility
+- **Reusability**: Components and hooks can be used independently
+- **Maintainability**: Small, focused files are easier to understand and modify
+- **Testability**: Each part can be tested in isolation
+
+### Custom Hooks Pattern
+- `useCounter`: Encapsulates counter state logic and persistence
+- `useVolumeButtons`: Abstracts platform-specific volume button handling
+
+### Platform-Specific Implementation
+- **iOS**: Uses `react-native-volume-manager` for volume button detection
+- **Android**: Custom native module for direct volume button interception
+
+## Getting Started
+
+### Prerequisites
+- Node.js (v18 or newer)
+- React Native development environment set up
+- Android Studio (for Android development)
+- Xcode (for iOS development, macOS only)
+
+### Installation
+
+1. Clone the repository:
+```bash
+git clone https://github.com/yourusername/TallyCounter.git
+cd TallyCounter
+```
+
+2. Install dependencies:
+```bash
+npm install
+```
+
+3. Install iOS dependencies (macOS only):
+```bash
+cd ios && pod install && cd ..
+```
+
+### Running the App
+
+#### Android
+```bash
+npm run android
+```
+
+#### iOS
+```bash
+npm run ios
+```
+
+#### Start Metro bundler separately
+```bash
+npm start
+```
+
+## Development
+
+### Code Quality
+```bash
+# Run linter
+npm run lint
+
+# Run tests
+npm test
+
+# Type check
+npx tsc --noEmit
+```
+
+### Project Commands
+- `npm start` - Start Metro bundler
+- `npm run android` - Run on Android device/emulator
+- `npm run ios` - Run on iOS device/simulator
+- `npm test` - Run tests
+- `npm run lint` - Check code style
+
+## Volume Button Support
 
 ### Android
-
-```sh
-# Using npm
-npm run android
-
-# OR using Yarn
-yarn android
-```
+The app intercepts hardware volume button presses to control the counter without affecting system volume. This is achieved through a custom native module.
 
 ### iOS
+Volume button detection works through the `react-native-volume-manager` library, which monitors volume changes and resets them immediately to simulate button capture.
 
-For iOS, remember to install CocoaPods dependencies (this only needs to be run on first clone or after updating native deps).
+## Contributing
 
-The first time you create a new project, run the Ruby bundler to install CocoaPods itself:
+1. Fork the repository
+2. Create your feature branch (`git checkout -b feature/amazing-feature`)
+3. Commit your changes (`git commit -m 'Add some amazing feature'`)
+4. Push to the branch (`git push origin feature/amazing-feature`)
+5. Open a Pull Request
 
-```sh
-bundle install
-```
+## License
 
-Then, and every time you update your native dependencies, run:
+This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
 
-```sh
-bundle exec pod install
-```
+## Acknowledgments
 
-For more information, please visit [CocoaPods Getting Started guide](https://guides.cocoapods.org/using/getting-started.html).
-
-```sh
-# Using npm
-npm run ios
-
-# OR using Yarn
-yarn ios
-```
-
-If everything is set up correctly, you should see your new app running in the Android Emulator, iOS Simulator, or your connected device.
-
-This is one way to run your app — you can also build it directly from Android Studio or Xcode.
-
-## Step 3: Modify your app
-
-Now that you have successfully run the app, let's make changes!
-
-Open `App.tsx` in your text editor of choice and make some changes. When you save, your app will automatically update and reflect these changes — this is powered by [Fast Refresh](https://reactnative.dev/docs/fast-refresh).
-
-When you want to forcefully reload, for example to reset the state of your app, you can perform a full reload:
-
-- **Android**: Press the <kbd>R</kbd> key twice or select **"Reload"** from the **Dev Menu**, accessed via <kbd>Ctrl</kbd> + <kbd>M</kbd> (Windows/Linux) or <kbd>Cmd ⌘</kbd> + <kbd>M</kbd> (macOS).
-- **iOS**: Press <kbd>R</kbd> in iOS Simulator.
-
-## Congratulations! :tada:
-
-You've successfully run and modified your React Native App. :partying_face:
-
-### Now what?
-
-- If you want to add this new React Native code to an existing application, check out the [Integration guide](https://reactnative.dev/docs/integration-with-existing-apps).
-- If you're curious to learn more about React Native, check out the [docs](https://reactnative.dev/docs/getting-started).
-
-# Troubleshooting
-
-If you're having issues getting the above steps to work, see the [Troubleshooting](https://reactnative.dev/docs/troubleshooting) page.
-
-# Learn More
-
-To learn more about React Native, take a look at the following resources:
-
-- [React Native Website](https://reactnative.dev) - learn more about React Native.
-- [Getting Started](https://reactnative.dev/docs/environment-setup) - an **overview** of React Native and how setup your environment.
-- [Learn the Basics](https://reactnative.dev/docs/getting-started) - a **guided tour** of the React Native **basics**.
-- [Blog](https://reactnative.dev/blog) - read the latest official React Native **Blog** posts.
-- [`@facebook/react-native`](https://github.com/facebook/react-native) - the Open Source; GitHub **repository** for React Native.
+- React Native community for the excellent libraries
+- Icons and design inspiration from modern UI trends
+- Built with ❤️ using React Native
