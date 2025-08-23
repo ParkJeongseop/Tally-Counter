@@ -10,6 +10,7 @@ import {
   Vibration,
   NativeModules,
   NativeEventEmitter,
+  DeviceEventEmitter,
 } from 'react-native';
 
 const { VolumeManager } = NativeModules;
@@ -20,7 +21,34 @@ function App() {
   useEffect(() => {
     console.log('Setting up volume button listeners for', Platform.OS);
     
-    if (VolumeManager) {
+    if (Platform.OS === 'android') {
+      const volumeUpListener = DeviceEventEmitter.addListener('VolumeUp', () => {
+        console.log('Volume Up pressed');
+        setCount(prev => {
+          const newCount = prev + 1;
+          console.log('Count increased to:', newCount);
+          return newCount;
+        });
+        Vibration.cancel();
+        Vibration.vibrate(10);
+      });
+
+      const volumeDownListener = DeviceEventEmitter.addListener('VolumeDown', () => {
+        console.log('Volume Down pressed');
+        setCount(prev => {
+          const newCount = Math.max(0, prev - 1);
+          console.log('Count decreased to:', newCount);
+          return newCount;
+        });
+        Vibration.cancel();
+        Vibration.vibrate(10);
+      });
+
+      return () => {
+        volumeUpListener.remove();
+        volumeDownListener.remove();
+      };
+    } else if (Platform.OS === 'ios' && VolumeManager) {
       const volumeManagerEmitter = new NativeEventEmitter(VolumeManager);
       
       const volumeUpListener = volumeManagerEmitter.addListener('RNVMEventVolume', (data) => {
@@ -53,7 +81,7 @@ function App() {
       });
 
       VolumeManager.setVolume(0.5);
-      if (Platform.OS === 'ios' && VolumeManager.hideVolumeView) {
+      if (VolumeManager.hideVolumeView) {
         VolumeManager.hideVolumeView();
       }
 
