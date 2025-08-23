@@ -5,7 +5,7 @@ import { colors } from '../styles/colors';
 export const Header: React.FC = () => {
   return (
     <View style={styles.container}>
-      <Text style={styles.title}>Tally Counter</Text>
+      <Text style={styles.title}>Physical Tally Counter</Text>
       <Text style={styles.subtitle}>Track anything, anytime</Text>
     </View>
   );

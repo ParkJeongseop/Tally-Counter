@@ -1,6 +1,6 @@
-# Tally Counter
+# Physical Tally Counter
 
-A simple and elegant tally counter app built with React Native. Count anything using on-screen buttons or hardware volume buttons.
+A simple and elegant physical tally counter app built with React Native. Count anything using on-screen buttons or hardware volume buttons.
 
 ## Features
 
@@ -66,8 +66,8 @@ src/
 
 1. Clone the repository:
 ```bash
-git clone https://github.com/yourusername/TallyCounter.git
-cd TallyCounter
+git clone https://github.com/yourusername/PhysicalTallyCounter.git
+cd PhysicalTallyCounter
 ```
 
 2. Install dependencies:
