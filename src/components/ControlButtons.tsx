@@ -1,6 +1,7 @@
 import React from 'react';
 import { View, Text, TouchableOpacity, StyleSheet, Vibration } from 'react-native';
 import { colors } from '../styles/colors';
+import { useOrientation } from '../hooks/useOrientation';
 
 interface ControlButtonsProps {
   onIncrement: () => void;
@@ -13,6 +14,8 @@ export const ControlButtons: React.FC<ControlButtonsProps> = ({
   onDecrement,
   onReset,
 }) => {
+  const orientation = useOrientation();
+  const isLandscape = orientation === 'landscape';
   const handleIncrement = () => {
     onIncrement();
     Vibration.cancel();
@@ -32,32 +35,44 @@ export const ControlButtons: React.FC<ControlButtonsProps> = ({
   };
 
   return (
-    <View style={styles.container}>
+    <View style={[styles.container, isLandscape && styles.containerLandscape]}>
       <TouchableOpacity 
-        style={[styles.button, styles.decrementButton]} 
+        style={[
+          styles.button, 
+          styles.decrementButton,
+          isLandscape && styles.buttonLandscape
+        ]} 
         onPress={handleDecrement}
         activeOpacity={0.8}>
-        <View style={styles.buttonInner}>
-          <Text style={styles.buttonIcon}>−</Text>
+        <View style={[styles.buttonInner, isLandscape && styles.buttonInnerLandscape]}>
+          <Text style={[styles.buttonIcon, isLandscape && styles.buttonIconLandscape]}>−</Text>
         </View>
       </TouchableOpacity>
       
       <TouchableOpacity 
-        style={[styles.button, styles.resetButton]} 
+        style={[
+          styles.button, 
+          styles.resetButton,
+          isLandscape && styles.resetButtonLandscape
+        ]} 
         onPress={handleReset}
         activeOpacity={0.8}>
-        <View style={styles.resetButtonInner}>
-          <Text style={styles.resetIcon}>↺</Text>
-          <Text style={styles.resetText}>RESET</Text>
+        <View style={[styles.resetButtonInner, isLandscape && styles.resetButtonInnerLandscape]}>
+          <Text style={[styles.resetIcon, isLandscape && styles.resetIconLandscape]}>↺</Text>
+          <Text style={[styles.resetText, isLandscape && styles.resetTextLandscape]}>RESET</Text>
         </View>
       </TouchableOpacity>
       
       <TouchableOpacity 
-        style={[styles.button, styles.incrementButton]} 
+        style={[
+          styles.button, 
+          styles.incrementButton,
+          isLandscape && styles.buttonLandscape
+        ]} 
         onPress={handleIncrement}
         activeOpacity={0.8}>
-        <View style={styles.buttonInner}>
-          <Text style={styles.buttonIcon}>+</Text>
+        <View style={[styles.buttonInner, isLandscape && styles.buttonInnerLandscape]}>
+          <Text style={[styles.buttonIcon, isLandscape && styles.buttonIconLandscape]}>+</Text>
         </View>
       </TouchableOpacity>
     </View>
@@ -72,6 +87,11 @@ const styles = StyleSheet.create({
     paddingVertical: 30,
     paddingHorizontal: 10,
     paddingBottom: 40,
+  },
+  containerLandscape: {
+    paddingVertical: 15,
+    paddingBottom: 20,
+    gap: 15,
   },
   button: {
     shadowColor: '#000',
@@ -90,6 +110,14 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
     alignItems: 'center',
   },
+  buttonInnerLandscape: {
+    width: 60,
+    height: 60,
+    borderRadius: 30,
+  },
+  buttonLandscape: {
+    borderRadius: 30,
+  },
   decrementButton: {
     backgroundColor: colors.danger,
     borderRadius: 37.5,
@@ -103,11 +131,17 @@ const styles = StyleSheet.create({
     fontWeight: '300',
     color: colors.white,
   },
+  buttonIconLandscape: {
+    fontSize: 32,
+  },
   resetButton: {
     backgroundColor: colors.transparent.white20,
     borderRadius: 25,
     borderWidth: 2,
     borderColor: colors.transparent.white30,
+  },
+  resetButtonLandscape: {
+    borderRadius: 20,
   },
   resetButtonInner: {
     paddingHorizontal: 24,
@@ -116,15 +150,26 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     gap: 8,
   },
+  resetButtonInnerLandscape: {
+    paddingHorizontal: 18,
+    paddingVertical: 12,
+    gap: 6,
+  },
   resetIcon: {
     fontSize: 20,
     color: colors.white,
     fontWeight: '600',
+  },
+  resetIconLandscape: {
+    fontSize: 16,
   },
   resetText: {
     fontSize: 14,
     fontWeight: '700',
     color: colors.white,
     letterSpacing: 1,
+  },
+  resetTextLandscape: {
+    fontSize: 12,
   },
 });

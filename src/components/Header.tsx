@@ -1,12 +1,20 @@
 import React from 'react';
 import { View, Text, StyleSheet } from 'react-native';
 import { colors } from '../styles/colors';
+import { useOrientation } from '../hooks/useOrientation';
 
 export const Header: React.FC = () => {
+  const orientation = useOrientation();
+  const isLandscape = orientation === 'landscape';
+  
   return (
-    <View style={styles.container}>
-      <Text style={styles.title}>Physical Tally Counter</Text>
-      <Text style={styles.subtitle}>Track anything, anytime</Text>
+    <View style={[styles.container, isLandscape && styles.containerLandscape]}>
+      <Text style={[styles.title, isLandscape && styles.titleLandscape]}>
+        Physical Tally Counter
+      </Text>
+      {!isLandscape && (
+        <Text style={styles.subtitle}>Track anything, anytime</Text>
+      )}
     </View>
   );
 };
@@ -17,12 +25,20 @@ const styles = StyleSheet.create({
     paddingBottom: 10,
     alignItems: 'center',
   },
+  containerLandscape: {
+    paddingTop: 10,
+    paddingBottom: 5,
+  },
   title: {
     fontSize: 36,
     fontWeight: '800',
     color: colors.white,
     letterSpacing: -0.5,
     marginBottom: 8,
+  },
+  titleLandscape: {
+    fontSize: 24,
+    marginBottom: 0,
   },
   subtitle: {
     fontSize: 16,
