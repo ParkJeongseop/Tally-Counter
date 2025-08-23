@@ -1,4 +1,4 @@
-package com.tallycounter
+package com.parkjeongseop.tallycounter
 
 import android.view.KeyEvent
 import com.facebook.react.ReactActivity

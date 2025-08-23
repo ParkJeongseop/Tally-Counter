@@ -1,4 +1,4 @@
-package com.tallycounter
+package com.parkjeongseop.tallycounter
 
 import com.facebook.react.bridge.ReactApplicationContext
 import com.facebook.react.bridge.ReactContextBaseJavaModule

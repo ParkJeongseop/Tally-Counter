@@ -1,4 +1,4 @@
-package com.tallycounter
+package com.parkjeongseop.tallycounter
 
 import android.app.Application
 import com.facebook.react.PackageList
