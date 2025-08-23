@@ -2,6 +2,7 @@ import React from 'react';
 import { View, Text, TouchableOpacity, StyleSheet, Vibration } from 'react-native';
 import { colors } from '../styles/colors';
 import { useOrientation } from '../hooks/useOrientation';
+import { t } from '../i18n';
 
 interface ControlButtonsProps {
   onIncrement: () => void;
@@ -59,7 +60,7 @@ export const ControlButtons: React.FC<ControlButtonsProps> = ({
         activeOpacity={0.8}>
         <View style={[styles.resetButtonInner, isLandscape && styles.resetButtonInnerLandscape]}>
           <Text style={[styles.resetIcon, isLandscape && styles.resetIconLandscape]}>↺</Text>
-          <Text style={[styles.resetText, isLandscape && styles.resetTextLandscape]}>RESET</Text>
+          <Text style={[styles.resetText, isLandscape && styles.resetTextLandscape]}>{t('reset')}</Text>
         </View>
       </TouchableOpacity>
       

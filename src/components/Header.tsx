@@ -2,6 +2,7 @@ import React from 'react';
 import { View, Text, StyleSheet } from 'react-native';
 import { colors } from '../styles/colors';
 import { useOrientation } from '../hooks/useOrientation';
+import { t } from '../i18n';
 
 export const Header: React.FC = () => {
   const orientation = useOrientation();
@@ -10,10 +11,10 @@ export const Header: React.FC = () => {
   return (
     <View style={[styles.container, isLandscape && styles.containerLandscape]}>
       <Text style={[styles.title, isLandscape && styles.titleLandscape]}>
-        Physical Tally Counter
+        {t('appTitle')}
       </Text>
       {!isLandscape && (
-        <Text style={styles.subtitle}>Track anything, anytime</Text>
+        <Text style={styles.subtitle}>{t('subtitle')}</Text>
       )}
     </View>
   );

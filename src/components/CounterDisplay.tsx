@@ -2,6 +2,7 @@ import React from 'react';
 import { View, Text, StyleSheet, Dimensions } from 'react-native';
 import { colors } from '../styles/colors';
 import { useOrientation } from '../hooks/useOrientation';
+import { t } from '../i18n';
 
 const { width, height } = Dimensions.get('window');
 
@@ -16,13 +17,13 @@ export const CounterDisplay: React.FC<CounterDisplayProps> = ({ count }) => {
   return (
     <View style={[styles.container, isLandscape && styles.containerLandscape]}>
       <View style={[styles.card, isLandscape && styles.cardLandscape]}>
-        <Text style={[styles.label, isLandscape && styles.labelLandscape]}>COUNT</Text>
+        <Text style={[styles.label, isLandscape && styles.labelLandscape]}>{t('count')}</Text>
         <Text style={[styles.counter, isLandscape && styles.counterLandscape]}>
           {count.toString().padStart(3, '0')}
         </Text>
         <View style={[styles.hint, isLandscape && styles.hintLandscape]}>
           <Text style={[styles.hintText, isLandscape && styles.hintTextLandscape]}>
-            Volume buttons to control
+            {t('volumeHint')}
           </Text>
         </View>
       </View>
