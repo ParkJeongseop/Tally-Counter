@@ -107,6 +107,18 @@ async function updateAndroidStrings() {
   }
 }
 
+function writeIOSLocalizationFile(filePath, appTitle) {
+  const content = `/* Localized app name */
+"CFBundleDisplayName" = "${appTitle}";`;
+  
+  // Convert to UTF-16 LE with BOM
+  const buffer = Buffer.from(content, 'utf16le');
+  const bom = Buffer.from([0xFF, 0xFE]); // UTF-16 LE BOM
+  const finalBuffer = Buffer.concat([bom, buffer]);
+  
+  fs.writeFileSync(filePath, finalBuffer);
+}
+
 async function updateIOSLocalizations() {
   console.log('\nCreating iOS localization files...');
   
@@ -142,14 +154,10 @@ async function updateIOSLocalizations() {
       fs.mkdirSync(lprojDir, { recursive: true });
     }
 
-    // Create InfoPlist.strings file
+    // Create InfoPlist.strings file with UTF-16 BOM
     const infoPlistPath = path.join(lprojDir, 'InfoPlist.strings');
-    const content = `/* Localized app name */
-"CFBundleDisplayName" = "${appTitle}";
-"CFBundleName" = "${appTitle}";`;
-
-    fs.writeFileSync(infoPlistPath, content, 'utf8');
-    console.log(`Created: ${iosLocale}.lproj/InfoPlist.strings`);
+    writeIOSLocalizationFile(infoPlistPath, appTitle);
+    console.log(`Created: ${iosLocale}.lproj/InfoPlist.strings (UTF-16 with BOM)`);
 
     // Handle Chinese variants
     if (lang === 'zh') {
@@ -160,8 +168,8 @@ async function updateIOSLocalizations() {
       }
       
       const zhHantPath = path.join(zhHantDir, 'InfoPlist.strings');
-      fs.writeFileSync(zhHantPath, content, 'utf8');
-      console.log(`Created: zh-Hant.lproj/InfoPlist.strings`);
+      writeIOSLocalizationFile(zhHantPath, appTitle);
+      console.log(`Created: zh-Hant.lproj/InfoPlist.strings (UTF-16 with BOM)`);
     }
   }
 }
