@@ -1,6 +1,6 @@
 {
   "name": "PhysicalTallyCounter",
-  "version": "0.0.1",
+  "version": "1.0.0",
   "private": true,
   "scripts": {
     "android": "react-native run-android",
@@ -8,7 +8,9 @@
     "lint": "eslint .",
     "start": "react-native start",
     "test": "jest",
-    "sync-app-names": "node scripts/sync-app-names.js"
+    "sync-app-names": "node scripts/sync-app-names.js",
+    "version:sync": "react-native-version",
+    "aab": "react-native build-android --mode=release"
   },
   "dependencies": {
     "@react-native-async-storage/async-storage": "^2.2.0",
@@ -22,6 +24,7 @@
     "react-native-linear-gradient": "^2.8.3",
     "react-native-localize": "^3.5.2",
     "react-native-safe-area-context": "^5.6.1",
+    "react-native-version": "^4.0.0",
     "react-native-volume-manager": "^2.0.8"
   },
   "devDependencies": {
