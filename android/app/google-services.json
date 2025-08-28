@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "994002598878",
+    "project_id": "physicaltallycounter",
+    "storage_bucket": "physicaltallycounter.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:994002598878:android:2c290de55aea47145cbb4f",
+        "android_client_info": {
+          "package_name": "com.parkjeongseop.tallycounter"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDTF01UFrNLPehvkgWWUA8SA1PcHRr8aBc"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
