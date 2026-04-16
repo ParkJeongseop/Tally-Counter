@@ -44,12 +44,13 @@ export const CounterDisplay: React.FC<CounterDisplayProps> = ({
               <View
                 style={[
                   styles.progressBarFill,
-                  {width: `${progress * 100}%`},
+                  {flex: Math.max(progress, 0.02)},
                   isGoalReached && styles.progressBarFillComplete,
                 ]}
               />
+              <View style={{flex: Math.max(1 - progress, 0)}} />
             </View>
-            <Text style={styles.progressText}>
+            <Text style={[styles.progressText, isGoalReached && styles.progressTextComplete]}>
               {count} / {goal}
               {isGoalReached ? ' ✓' : ` (${Math.round(progress * 100)}%)`}
             </Text>
@@ -143,24 +144,28 @@ const styles = StyleSheet.create({
   },
   progressBarBg: {
     width: '100%',
-    height: 8,
+    height: 12,
     backgroundColor: 'rgba(102, 126, 234, 0.15)',
-    borderRadius: 4,
+    borderRadius: 6,
     overflow: 'hidden',
+    flexDirection: 'row',
   },
   progressBarFill: {
-    height: '100%',
+    height: 12,
     backgroundColor: colors.primary,
-    borderRadius: 4,
+    borderRadius: 6,
   },
   progressBarFillComplete: {
     backgroundColor: colors.success,
   },
   progressText: {
-    fontSize: 13,
+    fontSize: 14,
     color: colors.primary,
-    fontWeight: '600',
-    marginTop: 6,
+    fontWeight: '700',
+    marginTop: 8,
+  },
+  progressTextComplete: {
+    color: colors.success,
   },
   goalButton: {
     marginTop: 14,
