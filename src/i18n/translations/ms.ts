@@ -15,4 +15,9 @@ export default {
   back: 'Kembali',
   labelPlaceholder: 'Tambah label (pilihan)',
   saveWithLabel: 'Simpan rekod',
+  goal: 'Sasaran',
+  setGoal: 'Tetapkan sasaran',
+  goalPlaceholder: 'Masukkan nombor sasaran',
+  goalReached: 'Sasaran dicapai!',
+  removeGoal: 'Padam',
 };

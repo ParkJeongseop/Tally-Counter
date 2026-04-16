@@ -15,4 +15,9 @@ export default {
   back: 'Takaisin',
   labelPlaceholder: 'Lisää tunniste (valinnainen)',
   saveWithLabel: 'Tallenna merkintä',
+  goal: 'Tavoite',
+  setGoal: 'Aseta tavoite',
+  goalPlaceholder: 'Syötä tavoiteluku',
+  goalReached: 'Tavoite saavutettu!',
+  removeGoal: 'Poista',
 };

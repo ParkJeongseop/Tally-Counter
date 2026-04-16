@@ -15,4 +15,9 @@ export default {
   back: 'Tilbake',
   labelPlaceholder: 'Legg til etikett (valgfritt)',
   saveWithLabel: 'Lagre post',
+  goal: 'Mål',
+  setGoal: 'Sett mål',
+  goalPlaceholder: 'Skriv inn måltall',
+  goalReached: 'Mål nådd!',
+  removeGoal: 'Fjern',
 };

@@ -15,4 +15,9 @@ export default {
   back: 'Înapoi',
   labelPlaceholder: 'Adaugă etichetă (opțional)',
   saveWithLabel: 'Salvează înregistrare',
+  goal: 'Obiectiv',
+  setGoal: 'Setează obiectiv',
+  goalPlaceholder: 'Introduceți numărul țintă',
+  goalReached: 'Obiectiv atins!',
+  removeGoal: 'Elimină',
 };

@@ -15,4 +15,9 @@ export default {
   back: 'Atpakaļ',
   labelPlaceholder: 'Pievienot etiķeti (neobligāti)',
   saveWithLabel: 'Saglabāt ierakstu',
+  goal: 'Mērķis',
+  setGoal: 'Iestatīt mērķi',
+  goalPlaceholder: 'Ievadiet mērķa skaitli',
+  goalReached: 'Mērķis sasniegts!',
+  removeGoal: 'Noņemt',
 };

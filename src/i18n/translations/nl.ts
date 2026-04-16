@@ -15,4 +15,9 @@ export default {
   back: 'Terug',
   labelPlaceholder: 'Label toevoegen (optioneel)',
   saveWithLabel: 'Record opslaan',
+  goal: 'Doel',
+  setGoal: 'Doel instellen',
+  goalPlaceholder: 'Voer doelnummer in',
+  goalReached: 'Doel bereikt!',
+  removeGoal: 'Verwijderen',
 };

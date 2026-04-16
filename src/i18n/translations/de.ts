@@ -15,4 +15,9 @@ export default {
   back: 'Zurück',
   labelPlaceholder: 'Bezeichnung hinzufügen (optional)',
   saveWithLabel: 'Eintrag speichern',
+  goal: 'Ziel',
+  setGoal: 'Ziel setzen',
+  goalPlaceholder: 'Zielzahl eingeben',
+  goalReached: 'Ziel erreicht!',
+  removeGoal: 'Entfernen',
 };

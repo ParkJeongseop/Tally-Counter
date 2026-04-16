@@ -15,4 +15,9 @@ export default {
   back: 'Enrere',
   labelPlaceholder: 'Afegir etiqueta (opcional)',
   saveWithLabel: 'Desar registre',
+  goal: 'Objectiu',
+  setGoal: 'Establir objectiu',
+  goalPlaceholder: 'Introduïu el nombre objectiu',
+  goalReached: 'Objectiu assolit!',
+  removeGoal: 'Eliminar',
 };

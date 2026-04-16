@@ -15,4 +15,9 @@ export default {
   back: '戻る',
   labelPlaceholder: 'ラベルを追加（任意）',
   saveWithLabel: '記録を保存',
+  goal: '目標',
+  setGoal: '目標を設定',
+  goalPlaceholder: '目標数を入力',
+  goalReached: '目標達成！',
+  removeGoal: '削除',
 };

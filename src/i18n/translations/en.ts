@@ -15,4 +15,9 @@ export default {
   back: 'Back',
   labelPlaceholder: 'Add a label (optional)',
   saveWithLabel: 'Save Record',
+  goal: 'Goal',
+  setGoal: 'Set Goal',
+  goalPlaceholder: 'Enter target number',
+  goalReached: 'Goal Reached!',
+  removeGoal: 'Remove',
 };

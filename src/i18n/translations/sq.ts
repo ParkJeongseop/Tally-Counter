@@ -15,4 +15,9 @@ export default {
   back: 'Prapa',
   labelPlaceholder: 'Shto etiketë (opsionale)',
   saveWithLabel: 'Ruaj regjistrimin',
+  goal: 'Objektivi',
+  setGoal: 'Vendos objektivin',
+  goalPlaceholder: 'Fut numrin e synuar',
+  goalReached: 'Objektivi u arrit!',
+  removeGoal: 'Hiq',
 };

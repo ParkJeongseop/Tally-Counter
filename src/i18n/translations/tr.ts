@@ -15,4 +15,9 @@ export default {
   back: 'Geri',
   labelPlaceholder: 'Etiket ekle (isteğe bağlı)',
   saveWithLabel: 'Kaydı kaydet',
+  goal: 'Hedef',
+  setGoal: 'Hedef belirle',
+  goalPlaceholder: 'Hedef sayıyı girin',
+  goalReached: 'Hedefe ulaşıldı!',
+  removeGoal: 'Kaldır',
 };

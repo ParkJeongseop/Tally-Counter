@@ -15,4 +15,9 @@ export default {
   back: 'Wstecz',
   labelPlaceholder: 'Dodaj etykietę (opcjonalnie)',
   saveWithLabel: 'Zapisz wpis',
+  goal: 'Cel',
+  setGoal: 'Ustaw cel',
+  goalPlaceholder: 'Wpisz liczbę docelową',
+  goalReached: 'Cel osiągnięty!',
+  removeGoal: 'Usuń',
 };

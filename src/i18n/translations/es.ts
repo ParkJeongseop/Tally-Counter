@@ -15,4 +15,9 @@ export default {
   back: 'Atrás',
   labelPlaceholder: 'Agregar etiqueta (opcional)',
   saveWithLabel: 'Guardar registro',
+  goal: 'Meta',
+  setGoal: 'Establecer meta',
+  goalPlaceholder: 'Ingrese número objetivo',
+  goalReached: '¡Meta alcanzada!',
+  removeGoal: 'Eliminar',
 };

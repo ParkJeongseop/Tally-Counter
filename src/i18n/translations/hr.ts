@@ -15,4 +15,9 @@ export default {
   back: 'Natrag',
   labelPlaceholder: 'Dodaj oznaku (neobavezno)',
   saveWithLabel: 'Spremi zapis',
+  goal: 'Cilj',
+  setGoal: 'Postavi cilj',
+  goalPlaceholder: 'Unesite ciljani broj',
+  goalReached: 'Cilj postignut!',
+  removeGoal: 'Ukloni',
 };

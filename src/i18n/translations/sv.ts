@@ -15,4 +15,9 @@ export default {
   back: 'Tillbaka',
   labelPlaceholder: 'Lägg till etikett (valfritt)',
   saveWithLabel: 'Spara post',
+  goal: 'Mål',
+  setGoal: 'Sätt mål',
+  goalPlaceholder: 'Ange måltal',
+  goalReached: 'Mål uppnått!',
+  removeGoal: 'Ta bort',
 };

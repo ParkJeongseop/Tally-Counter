@@ -15,4 +15,9 @@ export default {
   back: 'חזרה',
   labelPlaceholder: 'הוסף תווית (אופציונלי)',
   saveWithLabel: 'שמור רשומה',
+  goal: 'יעד',
+  setGoal: 'הגדר יעד',
+  goalPlaceholder: 'הזן מספר יעד',
+  goalReached: 'היעד הושג!',
+  removeGoal: 'הסר',
 };

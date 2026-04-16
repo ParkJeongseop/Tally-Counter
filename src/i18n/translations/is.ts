@@ -15,4 +15,9 @@ export default {
   back: 'Til baka',
   labelPlaceholder: 'Bæta við merki (valfrjálst)',
   saveWithLabel: 'Vista færslu',
+  goal: 'Markmið',
+  setGoal: 'Setja markmið',
+  goalPlaceholder: 'Sláðu inn marktölu',
+  goalReached: 'Markmiði náð!',
+  removeGoal: 'Fjarlægja',
 };

@@ -15,4 +15,9 @@ export default {
   back: '뒤로',
   labelPlaceholder: '라벨 추가 (선택사항)',
   saveWithLabel: '기록 저장',
+  goal: '목표',
+  setGoal: '목표 설정',
+  goalPlaceholder: '목표 숫자 입력',
+  goalReached: '목표 달성!',
+  removeGoal: '삭제',
 };

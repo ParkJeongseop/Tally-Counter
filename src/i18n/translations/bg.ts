@@ -15,4 +15,9 @@ export default {
   back: 'Назад',
   labelPlaceholder: 'Добави етикет (по избор)',
   saveWithLabel: 'Запази запис',
+  goal: 'Цел',
+  setGoal: 'Задай цел',
+  goalPlaceholder: 'Въведете целево число',
+  goalReached: 'Целта е постигната!',
+  removeGoal: 'Премахни',
 };

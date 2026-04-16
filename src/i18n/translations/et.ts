@@ -15,4 +15,9 @@ export default {
   back: 'Tagasi',
   labelPlaceholder: 'Lisa silt (valikuline)',
   saveWithLabel: 'Salvesta kirje',
+  goal: 'Eesmärk',
+  setGoal: 'Sea eesmärk',
+  goalPlaceholder: 'Sisestage sihtnumber',
+  goalReached: 'Eesmärk saavutatud!',
+  removeGoal: 'Eemalda',
 };

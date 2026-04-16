@@ -15,4 +15,9 @@ export default {
   back: 'वापस',
   labelPlaceholder: 'लेबल जोड़ें (वैकल्पिक)',
   saveWithLabel: 'रिकॉर्ड सहेजें',
+  goal: 'लक्ष्य',
+  setGoal: 'लक्ष्य सेट करें',
+  goalPlaceholder: 'लक्ष्य संख्या दर्ज करें',
+  goalReached: 'लक्ष्य प्राप्त!',
+  removeGoal: 'हटाएं',
 };

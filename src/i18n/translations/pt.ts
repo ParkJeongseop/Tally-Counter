@@ -15,4 +15,9 @@ export default {
   back: 'Voltar',
   labelPlaceholder: 'Adicionar rótulo (opcional)',
   saveWithLabel: 'Salvar registro',
+  goal: 'Meta',
+  setGoal: 'Definir meta',
+  goalPlaceholder: 'Insira o número alvo',
+  goalReached: 'Meta alcançada!',
+  removeGoal: 'Remover',
 };

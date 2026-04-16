@@ -15,4 +15,9 @@ export default {
   back: 'Atgal',
   labelPlaceholder: 'Pridėti etiketę (neprivaloma)',
   saveWithLabel: 'Išsaugoti įrašą',
+  goal: 'Tikslas',
+  setGoal: 'Nustatyti tikslą',
+  goalPlaceholder: 'Įveskite tikslinį skaičių',
+  goalReached: 'Tikslas pasiektas!',
+  removeGoal: 'Pašalinti',
 };

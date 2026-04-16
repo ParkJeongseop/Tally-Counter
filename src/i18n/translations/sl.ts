@@ -15,4 +15,9 @@ export default {
   back: 'Nazaj',
   labelPlaceholder: 'Dodaj oznako (neobvezno)',
   saveWithLabel: 'Shrani zapis',
+  goal: 'Cilj',
+  setGoal: 'Nastavi cilj',
+  goalPlaceholder: 'Vnesite ciljno število',
+  goalReached: 'Cilj dosežen!',
+  removeGoal: 'Odstrani',
 };

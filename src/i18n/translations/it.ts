@@ -15,4 +15,9 @@ export default {
   back: 'Indietro',
   labelPlaceholder: 'Aggiungi etichetta (facoltativo)',
   saveWithLabel: 'Salva record',
+  goal: 'Obiettivo',
+  setGoal: 'Imposta obiettivo',
+  goalPlaceholder: 'Inserisci il numero obiettivo',
+  goalReached: 'Obiettivo raggiunto!',
+  removeGoal: 'Rimuovi',
 };

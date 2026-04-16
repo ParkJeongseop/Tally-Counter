@@ -15,4 +15,9 @@ export default {
   back: 'Πίσω',
   labelPlaceholder: 'Προσθήκη ετικέτας (προαιρετικό)',
   saveWithLabel: 'Αποθήκευση εγγραφής',
+  goal: 'Στόχος',
+  setGoal: 'Ορισμός στόχου',
+  goalPlaceholder: 'Εισάγετε αριθμό στόχο',
+  goalReached: 'Ο στόχος επιτεύχθηκε!',
+  removeGoal: 'Αφαίρεση',
 };

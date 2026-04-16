@@ -15,4 +15,9 @@ export default {
   back: 'رجوع',
   labelPlaceholder: 'إضافة تسمية (اختياري)',
   saveWithLabel: 'حفظ السجل',
+  goal: 'الهدف',
+  setGoal: 'تحديد الهدف',
+  goalPlaceholder: 'أدخل الرقم المستهدف',
+  goalReached: 'تم تحقيق الهدف!',
+  removeGoal: 'إزالة',
 };

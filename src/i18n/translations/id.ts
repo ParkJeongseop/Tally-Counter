@@ -15,4 +15,9 @@ export default {
   back: 'Kembali',
   labelPlaceholder: 'Tambah label (opsional)',
   saveWithLabel: 'Simpan catatan',
+  goal: 'Target',
+  setGoal: 'Atur target',
+  goalPlaceholder: 'Masukkan angka target',
+  goalReached: 'Target tercapai!',
+  removeGoal: 'Hapus',
 };

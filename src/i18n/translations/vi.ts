@@ -15,4 +15,9 @@ export default {
   back: 'Quay lại',
   labelPlaceholder: 'Thêm nhãn (tùy chọn)',
   saveWithLabel: 'Lưu bản ghi',
+  goal: 'Mục tiêu',
+  setGoal: 'Đặt mục tiêu',
+  goalPlaceholder: 'Nhập số mục tiêu',
+  goalReached: 'Đạt mục tiêu!',
+  removeGoal: 'Xóa',
 };

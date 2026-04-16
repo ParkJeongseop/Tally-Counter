@@ -15,4 +15,9 @@ export default {
   back: 'Tilbage',
   labelPlaceholder: 'Tilføj etiket (valgfrit)',
   saveWithLabel: 'Gem post',
+  goal: 'Mål',
+  setGoal: 'Sæt mål',
+  goalPlaceholder: 'Indtast måltal',
+  goalReached: 'Mål nået!',
+  removeGoal: 'Fjern',
 };

@@ -15,4 +15,9 @@ export default {
   back: '返回',
   labelPlaceholder: '添加标签（可选）',
   saveWithLabel: '保存记录',
+  goal: '目标',
+  setGoal: '设定目标',
+  goalPlaceholder: '输入目标数字',
+  goalReached: '目标达成！',
+  removeGoal: '删除',
 };

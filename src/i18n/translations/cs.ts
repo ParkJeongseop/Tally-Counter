@@ -15,4 +15,9 @@ export default {
   back: 'Zpět',
   labelPlaceholder: 'Přidat štítek (volitelné)',
   saveWithLabel: 'Uložit záznam',
+  goal: 'Cíl',
+  setGoal: 'Nastavit cíl',
+  goalPlaceholder: 'Zadejte cílové číslo',
+  goalReached: 'Cíl dosažen!',
+  removeGoal: 'Odebrat',
 };

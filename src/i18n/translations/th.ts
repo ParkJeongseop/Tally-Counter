@@ -15,4 +15,9 @@ export default {
   back: 'กลับ',
   labelPlaceholder: 'เพิ่มป้ายกำกับ (ไม่บังคับ)',
   saveWithLabel: 'บันทึกรายการ',
+  goal: 'เป้าหมาย',
+  setGoal: 'ตั้งเป้าหมาย',
+  goalPlaceholder: 'ใส่ตัวเลขเป้าหมาย',
+  goalReached: 'ถึงเป้าหมายแล้ว!',
+  removeGoal: 'ลบ',
 };

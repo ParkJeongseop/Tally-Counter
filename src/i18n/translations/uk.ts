@@ -15,4 +15,9 @@ export default {
   back: 'Назад',
   labelPlaceholder: 'Додати мітку (необов\'язково)',
   saveWithLabel: 'Зберегти запис',
+  goal: 'Мета',
+  setGoal: 'Встановити мету',
+  goalPlaceholder: 'Введіть цільове число',
+  goalReached: 'Мету досягнуто!',
+  removeGoal: 'Видалити',
 };

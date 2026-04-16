@@ -15,4 +15,9 @@ export default {
   back: 'Retour',
   labelPlaceholder: 'Ajouter un libellé (facultatif)',
   saveWithLabel: 'Enregistrer',
+  goal: 'Objectif',
+  setGoal: 'Définir un objectif',
+  goalPlaceholder: 'Entrez le nombre cible',
+  goalReached: 'Objectif atteint !',
+  removeGoal: 'Supprimer',
 };

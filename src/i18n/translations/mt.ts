@@ -15,4 +15,9 @@ export default {
   back: 'Lura',
   labelPlaceholder: 'Żid tikketta (mhux obbligatorju)',
   saveWithLabel: 'Issejvja r-rekord',
+  goal: 'Mira',
+  setGoal: 'Issettja mira',
+  goalPlaceholder: 'Daħħal in-numru fil-mira',
+  goalReached: 'Il-mira ntlaħqet!',
+  removeGoal: 'Neħħi',
 };

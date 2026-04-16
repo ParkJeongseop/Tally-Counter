@@ -15,4 +15,9 @@ export default {
   back: 'Vissza',
   labelPlaceholder: 'Címke hozzáadása (opcionális)',
   saveWithLabel: 'Bejegyzés mentése',
+  goal: 'Cél',
+  setGoal: 'Cél beállítása',
+  goalPlaceholder: 'Adja meg a célszámot',
+  goalReached: 'Cél elérve!',
+  removeGoal: 'Eltávolítás',
 };
