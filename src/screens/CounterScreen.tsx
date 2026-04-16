@@ -9,7 +9,15 @@ import { useVolumeButtons } from '../hooks/useVolumeButtons';
 import { useOrientation } from '../hooks/useOrientation';
 import { colors } from '../styles/colors';
 
-export const CounterScreen: React.FC = () => {
+interface CounterScreenProps {
+  onNavigateToHistory: () => void;
+  onSaveToHistory: (count: number, label?: string) => void;
+}
+
+export const CounterScreen: React.FC<CounterScreenProps> = ({
+  onNavigateToHistory,
+  onSaveToHistory,
+}) => {
   const { count, increment, decrement, reset } = useCounter();
   const orientation = useOrientation();
   const isLandscape = orientation === 'landscape';
@@ -27,12 +35,17 @@ export const CounterScreen: React.FC = () => {
           contentContainerStyle={[styles.scrollContent, isLandscape && styles.scrollContentLandscape]}
           showsVerticalScrollIndicator={false}
           bounces={false}>
-          <Header />
+          <Header onHistoryPress={onNavigateToHistory} />
           <CounterDisplay count={count} />
-          <ControlButtons 
+          <ControlButtons
             onIncrement={increment}
             onDecrement={decrement}
-            onReset={reset}
+            onReset={() => {
+              if (count > 0) {
+                onSaveToHistory(count);
+              }
+              reset();
+            }}
           />
         </ScrollView>
       </SafeAreaView>

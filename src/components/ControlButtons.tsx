@@ -1,8 +1,8 @@
 import React from 'react';
-import { View, Text, TouchableOpacity, StyleSheet, Vibration } from 'react-native';
-import { colors } from '../styles/colors';
-import { useOrientation } from '../hooks/useOrientation';
-import { t } from '../i18n';
+import {View, Text, TouchableOpacity, StyleSheet, Vibration} from 'react-native';
+import {colors} from '../styles/colors';
+import {useOrientation} from '../hooks/useOrientation';
+import {t} from '../i18n';
 
 interface ControlButtonsProps {
   onIncrement: () => void;
@@ -17,6 +17,7 @@ export const ControlButtons: React.FC<ControlButtonsProps> = ({
 }) => {
   const orientation = useOrientation();
   const isLandscape = orientation === 'landscape';
+
   const handleIncrement = () => {
     onIncrement();
     Vibration.cancel();
@@ -37,43 +38,79 @@ export const ControlButtons: React.FC<ControlButtonsProps> = ({
 
   return (
     <View style={[styles.container, isLandscape && styles.containerLandscape]}>
-      <TouchableOpacity 
+      <TouchableOpacity
         style={[
-          styles.button, 
+          styles.button,
           styles.decrementButton,
-          isLandscape && styles.buttonLandscape
-        ]} 
+          isLandscape && styles.buttonLandscape,
+        ]}
         onPress={handleDecrement}
         activeOpacity={0.8}>
-        <View style={[styles.buttonInner, isLandscape && styles.buttonInnerLandscape]}>
-          <Text style={[styles.buttonIcon, isLandscape && styles.buttonIconLandscape]}>−</Text>
+        <View
+          style={[
+            styles.buttonInner,
+            isLandscape && styles.buttonInnerLandscape,
+          ]}>
+          <Text
+            style={[
+              styles.buttonIcon,
+              isLandscape && styles.buttonIconLandscape,
+            ]}>
+            −
+          </Text>
         </View>
       </TouchableOpacity>
-      
-      <TouchableOpacity 
+
+      <TouchableOpacity
         style={[
-          styles.button, 
+          styles.button,
           styles.resetButton,
-          isLandscape && styles.resetButtonLandscape
-        ]} 
+          isLandscape && styles.resetButtonLandscape,
+        ]}
         onPress={handleReset}
         activeOpacity={0.8}>
-        <View style={[styles.resetButtonInner, isLandscape && styles.resetButtonInnerLandscape]}>
-          <Text style={[styles.resetIcon, isLandscape && styles.resetIconLandscape]}>↺</Text>
-          <Text style={[styles.resetText, isLandscape && styles.resetTextLandscape]}>{t('reset')}</Text>
+        <View
+          style={[
+            styles.resetButtonInner,
+            isLandscape && styles.resetButtonInnerLandscape,
+          ]}>
+          <Text
+            style={[
+              styles.resetIcon,
+              isLandscape && styles.resetIconLandscape,
+            ]}>
+            ↺
+          </Text>
+          <Text
+            style={[
+              styles.resetText,
+              isLandscape && styles.resetTextLandscape,
+            ]}>
+            {t('reset')}
+          </Text>
         </View>
       </TouchableOpacity>
-      
-      <TouchableOpacity 
+
+      <TouchableOpacity
         style={[
-          styles.button, 
+          styles.button,
           styles.incrementButton,
-          isLandscape && styles.buttonLandscape
-        ]} 
+          isLandscape && styles.buttonLandscape,
+        ]}
         onPress={handleIncrement}
         activeOpacity={0.8}>
-        <View style={[styles.buttonInner, isLandscape && styles.buttonInnerLandscape]}>
-          <Text style={[styles.buttonIcon, isLandscape && styles.buttonIconLandscape]}>+</Text>
+        <View
+          style={[
+            styles.buttonInner,
+            isLandscape && styles.buttonInnerLandscape,
+          ]}>
+          <Text
+            style={[
+              styles.buttonIcon,
+              isLandscape && styles.buttonIconLandscape,
+            ]}>
+            +
+          </Text>
         </View>
       </TouchableOpacity>
     </View>
