@@ -4,6 +4,13 @@ apply plugin: "com.facebook.react"
 apply plugin: "com.google.gms.google-services"
 apply plugin: "com.google.firebase.crashlytics"
 
+// Load keystore credentials
+def keystorePropertiesFile = rootProject.file("keystore.properties")
+def keystoreProperties = new Properties()
+if (keystorePropertiesFile.exists()) {
+    keystoreProperties.load(new FileInputStream(keystorePropertiesFile))
+}
+
 /**
  * This is the configuration block to customize your React Native Android app.
  * By default you don't need to apply any configuration, just uncomment the lines you need.
@@ -87,6 +94,7 @@ android {
         versionCode 2
         versionName "1.0.0"
         resConfigs "en", "ko", "ja", "zh", "zh-rCN", "zh-rTW", "es", "fr", "de", "pt", "pt-rBR", "ru", "ar", "hi", "it", "nl", "tr", "pl", "sv", "vi", "th", "in", "ms", "uk", "iw", "el", "cs", "hu", "ro", "sk", "hr", "ca", "fi", "da", "nb", "bg", "lt", "lv", "et", "sl", "is", "mt", "sq"
+        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
     }
     signingConfigs {
         debug {
@@ -95,15 +103,21 @@ android {
             keyAlias 'androiddebugkey'
             keyPassword 'android'
         }
+        release {
+            if (keystoreProperties['TALLYCOUNTER_UPLOAD_STORE_FILE']) {
+                storeFile file(keystoreProperties['TALLYCOUNTER_UPLOAD_STORE_FILE'])
+                storePassword keystoreProperties['TALLYCOUNTER_UPLOAD_STORE_PASSWORD']
+                keyAlias keystoreProperties['TALLYCOUNTER_UPLOAD_KEY_ALIAS']
+                keyPassword keystoreProperties['TALLYCOUNTER_UPLOAD_KEY_PASSWORD']
+            }
+        }
     }
     buildTypes {
         debug {
             signingConfig signingConfigs.debug
         }
         release {
-            // Caution! In production, you need to generate your own keystore file.
-            // see https://reactnative.dev/docs/signed-apk-android.
-            signingConfig signingConfigs.debug
+            signingConfig keystoreProperties['TALLYCOUNTER_UPLOAD_STORE_FILE'] ? signingConfigs.release : signingConfigs.debug
             minifyEnabled enableProguardInReleaseBuilds
             proguardFiles getDefaultProguardFile("proguard-android.txt"), "proguard-rules.pro"
         }
@@ -113,7 +127,7 @@ android {
 dependencies {
     // The version of react-native is set by the React Native Gradle Plugin
     implementation("com.facebook.react:react-android")
-    
+
     // Firebase BOM
     implementation platform('com.google.firebase:firebase-bom:32.7.0')
     implementation("com.google.firebase:firebase-analytics")
@@ -124,4 +138,11 @@ dependencies {
     } else {
         implementation jscFlavor
     }
+
+    // Fastlane Screengrab
+    androidTestImplementation("tools.fastlane:screengrab:2.1.1")
+    androidTestImplementation("androidx.test.ext:junit:1.2.1")
+    androidTestImplementation("androidx.test:runner:1.6.2")
+    androidTestImplementation("androidx.test:rules:1.6.1")
+    androidTestImplementation("androidx.test.uiautomator:uiautomator:2.3.0")
 }
