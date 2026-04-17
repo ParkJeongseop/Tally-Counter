@@ -7,6 +7,9 @@ PODS:
   - FBLazyVector (0.80.2)
   - Firebase/CoreOnly (12.1.0):
     - FirebaseCore (~> 12.1.0)
+  - Firebase/Crashlytics (12.1.0):
+    - Firebase/CoreOnly
+    - FirebaseCrashlytics (~> 12.1.0)
   - FirebaseAnalytics (12.1.0):
     - FirebaseAnalytics/Default (= 12.1.0)
     - FirebaseCore (~> 12.1.0)
@@ -47,13 +50,34 @@ PODS:
     - FirebaseCoreInternal (~> 12.1.0)
     - GoogleUtilities/Environment (~> 8.1)
     - GoogleUtilities/Logger (~> 8.1)
+  - FirebaseCoreExtension (12.1.0):
+    - FirebaseCore (~> 12.1.0)
   - FirebaseCoreInternal (12.1.0):
     - "GoogleUtilities/NSData+zlib (~> 8.1)"
+  - FirebaseCrashlytics (12.1.0):
+    - FirebaseCore (~> 12.1.0)
+    - FirebaseInstallations (~> 12.1.0)
+    - FirebaseRemoteConfigInterop (~> 12.1.0)
+    - FirebaseSessions (~> 12.1.0)
+    - GoogleDataTransport (~> 10.1)
+    - GoogleUtilities/Environment (~> 8.1)
+    - nanopb (~> 3.30910.0)
+    - PromisesObjC (~> 2.4)
   - FirebaseInstallations (12.1.0):
     - FirebaseCore (~> 12.1.0)
     - GoogleUtilities/Environment (~> 8.1)
     - GoogleUtilities/UserDefaults (~> 8.1)
     - PromisesObjC (~> 2.4)
+  - FirebaseRemoteConfigInterop (12.1.0)
+  - FirebaseSessions (12.1.0):
+    - FirebaseCore (~> 12.1.0)
+    - FirebaseCoreExtension (~> 12.1.0)
+    - FirebaseInstallations (~> 12.1.0)
+    - GoogleDataTransport (~> 10.1)
+    - GoogleUtilities/Environment (~> 8.1)
+    - GoogleUtilities/UserDefaults (~> 8.1)
+    - nanopb (~> 3.30910.0)
+    - PromisesSwift (~> 2.1)
   - fmt (11.0.2)
   - glog (0.3.5)
   - GoogleAdsOnDeviceConversion (2.2.0):
@@ -82,6 +106,9 @@ PODS:
     - GoogleUtilities/Network (~> 8.1)
     - "GoogleUtilities/NSData+zlib (~> 8.1)"
     - nanopb (~> 3.30910.0)
+  - GoogleDataTransport (10.1.0):
+    - nanopb (~> 3.30910.0)
+    - PromisesObjC (~> 2.4)
   - GoogleUtilities (8.1.0):
     - GoogleUtilities/AppDelegateSwizzler (= 8.1.0)
     - GoogleUtilities/Environment (= 8.1.0)
@@ -132,6 +159,8 @@ PODS:
   - nanopb/decode (3.30910.0)
   - nanopb/encode (3.30910.0)
   - PromisesObjC (2.4.0)
+  - PromisesSwift (2.4.0):
+    - PromisesObjC (= 2.4.0)
   - RCT-Folly (2024.11.18.00):
     - boost
     - DoubleConversion
@@ -2376,6 +2405,11 @@ PODS:
   - RNFBApp (23.1.2):
     - Firebase/CoreOnly (= 12.1.0)
     - React-Core
+  - RNFBCrashlytics (23.1.2):
+    - Firebase/Crashlytics (= 12.1.0)
+    - FirebaseCoreExtension
+    - React-Core
+    - RNFBApp
   - RNLocalize (3.5.2):
     - boost
     - DoubleConversion
@@ -2416,10 +2450,14 @@ DEPENDENCIES:
   - FBLazyVector (from `../node_modules/react-native/Libraries/FBLazyVector`)
   - FirebaseAnalytics
   - FirebaseCore
+  - FirebaseCoreExtension
+  - FirebaseInstallations
   - fmt (from `../node_modules/react-native/third-party-podspecs/fmt.podspec`)
   - glog (from `../node_modules/react-native/third-party-podspecs/glog.podspec`)
+  - GoogleDataTransport
   - GoogleUtilities
   - hermes-engine (from `../node_modules/react-native/sdks/hermes-engine/hermes-engine.podspec`)
+  - nanopb
   - RCT-Folly (from `../node_modules/react-native/third-party-podspecs/RCT-Folly.podspec`)
   - RCTDeprecation (from `../node_modules/react-native/ReactApple/Libraries/RCTFoundation/RCTDeprecation`)
   - RCTRequired (from `../node_modules/react-native/Libraries/Required`)
@@ -2490,6 +2528,7 @@ DEPENDENCIES:
   - "RNCAsyncStorage (from `../node_modules/@react-native-async-storage/async-storage`)"
   - "RNFBAnalytics (from `../node_modules/@react-native-firebase/analytics`)"
   - "RNFBApp (from `../node_modules/@react-native-firebase/app`)"
+  - "RNFBCrashlytics (from `../node_modules/@react-native-firebase/crashlytics`)"
   - RNLocalize (from `../node_modules/react-native-localize`)
   - SocketRocket (~> 0.7.1)
   - Yoga (from `../node_modules/react-native/ReactCommon/yoga`)
@@ -2499,14 +2538,20 @@ SPEC REPOS:
     - Firebase
     - FirebaseAnalytics
     - FirebaseCore
+    - FirebaseCoreExtension
     - FirebaseCoreInternal
+    - FirebaseCrashlytics
     - FirebaseInstallations
+    - FirebaseRemoteConfigInterop
+    - FirebaseSessions
     - GoogleAdsOnDeviceConversion
     - GoogleAppMeasurement
+    - GoogleDataTransport
     - GoogleUtilities
     - Mute
     - nanopb
     - PromisesObjC
+    - PromisesSwift
     - SocketRocket
 
 EXTERNAL SOURCES:
@@ -2665,6 +2710,8 @@ EXTERNAL SOURCES:
     :path: "../node_modules/@react-native-firebase/analytics"
   RNFBApp:
     :path: "../node_modules/@react-native-firebase/app"
+  RNFBCrashlytics:
+    :path: "../node_modules/@react-native-firebase/crashlytics"
   RNLocalize:
     :path: "../node_modules/react-native-localize"
   Yoga:
@@ -2679,17 +2726,23 @@ SPEC CHECKSUMS:
   Firebase: 9edc9acf71313eb20e209c42e5469a42564fe1aa
   FirebaseAnalytics: e89a37004bce8789cb53f4cb3e80160d925e6624
   FirebaseCore: 5a452ffa66f37c8e281076996837626c5d08c090
+  FirebaseCoreExtension: dd89d73548ee9be5d8dc60e5c76bc421b965853b
   FirebaseCoreInternal: ff526c22671bb564d1b34a47615e29ba99389dee
+  FirebaseCrashlytics: 5834becad22032e1075ff945dcac2d66500d7f1f
   FirebaseInstallations: 6836550c466a6c3f753a777bec6f4e58ea228779
+  FirebaseRemoteConfigInterop: a30ffe29b80e3aec9580a44ec9deb7e19e08e6e8
+  FirebaseSessions: 778459b8339fcd8201361f552db4d7223f74eb72
   fmt: a40bb5bd0294ea969aaaba240a927bd33d878cdd
   glog: 5683914934d5b6e4240e497e0f4a3b42d1854183
   GoogleAdsOnDeviceConversion: b225b50f2ee6bbf856fd51a26684929b32657215
   GoogleAppMeasurement: 61605c4152a142d797383a713ecfa5df98fe46ca
+  GoogleDataTransport: aae35b7ea0c09004c3797d53c8c41f66f219d6a7
   GoogleUtilities: 00c88b9a86066ef77f0da2fab05f65d7768ed8e1
   hermes-engine: bbc1152da7d2d40f9e59c28acc6576fcf5d28e2a
   Mute: 20135a96076f140cc82bfc8b810e2d6150d8ec7e
   nanopb: fad817b59e0457d11a5dfbde799381cd727c1275
   PromisesObjC: f5707f49cb48b9636751c5b2e7d227e43fba9f47
+  PromisesSwift: 9d77319bbe72ebf6d872900551f7eeba9bce2851
   RCT-Folly: 846fda9475e61ec7bcbf8a3fe81edfcaeb090669
   RCTDeprecation: 300c5eb91114d4339b0bb39505d0f4824d7299b7
   RCTRequired: e0446b01093475b7082fbeee5d1ef4ad1fe20ac4
@@ -2759,10 +2812,11 @@ SPEC CHECKSUMS:
   RNCAsyncStorage: 1f04c8d56558e533277beda29187f571cf7eecb2
   RNFBAnalytics: de9eb5d870afbda706a3cc7b1d49c3ae5fbc35da
   RNFBApp: 3155b54dc88e7bf8d7aad86c014bed54747f4e0f
+  RNFBCrashlytics: e877918706631e3533c2fdedc97b54f5f8956f14
   RNLocalize: b7add9a88809d9c4ee29df02650cf6f4cbb55144
   SocketRocket: d4aabe649be1e368d1318fdf28a022d714d65748
   Yoga: a742cc68e8366fcfc681808162492bc0aa7a9498
 
-PODFILE CHECKSUM: b4c6c71c15215b8138aaa5dbaefa2a4df4ed2be0
+PODFILE CHECKSUM: 9866092f71e59fdac923ce53b9d44e74ad5690c7
 
 COCOAPODS: 1.16.2
