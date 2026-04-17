@@ -1,0 +1,5 @@
+app_identifier("com.parkjeongseop.tallycounter")
+
+# Apple ID and Team ID - uncomment and fill in
+# apple_id("your@email.com")
+# team_id("XXXXXXXXXX")

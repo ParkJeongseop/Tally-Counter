@@ -1,0 +1,38 @@
+# Snapfile - Fastlane Snapshot Configuration
+
+# Xcode workspace
+workspace("ios/TallyCounter.xcworkspace")
+
+# UI Test scheme
+scheme("TallyCounterUITests")
+
+# Devices to capture
+devices([
+  "iPhone 16 Pro Max",
+  "iPhone 16 Plus",
+  "iPad Pro 13-inch (M4)",
+])
+
+# Languages to capture
+languages([
+  "en-US",
+  "ko",
+  "ja",
+  "zh-Hans",
+  "es-ES",
+  "fr-FR",
+  "de-DE",
+  "pt-PT",
+])
+
+# Output directory
+output_directory("./fastlane/screenshots")
+
+# Clear previous screenshots
+clear_previous_screenshots(true)
+
+# Override status bar for clean screenshots
+override_status_bar(true)
+
+# Run simulators concurrently
+concurrent_simulators(true)

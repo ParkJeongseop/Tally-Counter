@@ -1,0 +1,21 @@
+# Screengrabfile - Fastlane Screengrab Configuration
+
+app_package_name("com.parkjeongseop.tallycounter")
+app_apk_path("android/app/build/outputs/apk/debug/app-debug.apk")
+tests_apk_path("android/app/build/outputs/apk/androidTest/debug/app-debug-androidTest.apk")
+
+locales([
+  "en-US",
+  "ko-KR",
+  "ja-JP",
+  "zh-CN",
+  "es-ES",
+  "fr-FR",
+  "de-DE",
+  "pt-PT",
+])
+
+output_directory("./fastlane/screenshots_android")
+clear_previous_screenshots(true)
+use_timestamp_suffix(false)
+ending_locale("en-US")
