@@ -19,6 +19,10 @@ target 'TallyCounter' do
 
   pod 'GoogleUtilities', :modular_headers => true
   pod 'FirebaseCore', :modular_headers => true
+  pod 'FirebaseCoreExtension', :modular_headers => true
+  pod 'FirebaseInstallations', :modular_headers => true
+  pod 'GoogleDataTransport', :modular_headers => true
+  pod 'nanopb', :modular_headers => true
   pod 'FirebaseAnalytics'
 
   use_react_native!(
@@ -35,5 +39,16 @@ target 'TallyCounter' do
       :mac_catalyst_enabled => false,
       # :ccache_enabled => true
     )
+
+    # Workaround: fmt 11.0.2 consteval incompatibility with Xcode 26 Clang
+    installer.pods_project.targets.each do |target|
+      if target.name == 'fmt'
+        target.build_configurations.each do |bc|
+          defs = bc.build_settings['GCC_PREPROCESSOR_DEFINITIONS'] || ['$(inherited)']
+          defs << 'FMT_USE_CONSTEVAL=0'
+          bc.build_settings['GCC_PREPROCESSOR_DEFINITIONS'] = defs
+        end
+      end
+    end
   end
 end
