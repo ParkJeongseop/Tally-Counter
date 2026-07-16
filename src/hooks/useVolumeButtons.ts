@@ -18,7 +18,9 @@ export const useVolumeButtons = ({ onVolumeUp, onVolumeDown }: UseVolumeButtonsP
   useEffect(() => {
     console.log('Setting up volume button listeners for', Platform.OS);
     
-    if (Platform.OS === 'android') {
+    // HarmonyOS (RNOH) delivers the same 'VolumeUp'/'VolumeDown' device events
+    // as Android; they are emitted from harmony/entry/src/main/ets/pages/Index.ets.
+    if (Platform.OS === 'android' || (Platform.OS as string) === 'harmony') {
       const volumeUpListener = DeviceEventEmitter.addListener('VolumeUp', () => {
         console.log('Volume Up pressed');
         onVolumeUp();
