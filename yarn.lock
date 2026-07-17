@@ -7378,7 +7378,7 @@ react-refresh@^0.14.0:
   resolved "https://registry.npmjs.org/react-refresh/-/react-refresh-0.14.2.tgz"
   integrity sha512-jCvmsr+1IUSMUyzOkRcvnVbX3ZYC6g9TDrDbFuFmRDq7PD4yaGbLKNQL6k2jnArV8hjYxh7hVhAZB6s9HDGpZA==
 
-react-test-renderer@^19.1.1:
+react-test-renderer@19.1.1:
   version "19.1.1"
   resolved "https://registry.npmjs.org/react-test-renderer/-/react-test-renderer-19.1.1.tgz"
   integrity sha512-aGRXI+zcBTtg0diHofc7+Vy97nomBs9WHHFY1Csl3iV0x6xucjNYZZAkiVKGiNYUv23ecOex5jE67t8ZzqYObA==
@@ -7386,10 +7386,10 @@ react-test-renderer@^19.1.1:
     react-is "^19.1.1"
     scheduler "^0.26.0"
 
-react@*, react@^19.1.1:
-  version "19.2.7"
-  resolved "https://registry.npmjs.org/react/-/react-19.2.7.tgz"
-  integrity sha512-HNe9WslTbXmFK8o8cmwgAeJFSBvt1bPdHCVKtaaV+WlAN36mpT4hcRpwbf3fY56ar2oIXzsBpOAiIRHAdY0OlQ==
+react@*, react@^19.1.1, react@19.1.1:
+  version "19.1.1"
+  resolved "https://registry.npmjs.org/react/-/react-19.1.1.tgz"
+  integrity sha512-w8nqGImo45dmMIfljjMwOGtbmC/mk4CMYhWIicdSflH91J9TyCyczcPFXJzrZ/ZXcgGRFeP6BU0BEJTw6tZdfQ==
 
 readable-stream@^3.4.0:
   version "3.6.2"

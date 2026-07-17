@@ -78,12 +78,12 @@ struct Index {
           jsBundleProvider: this.rnohCoreContext?.isDebugModeEnabled ?
             new AnyJSBundleProvider([
               new MetroJSBundleProvider(),
-              new ResourceJSBundleProvider(this.rnohCoreContext.uiAbilityContext.resourceManager, 'hermes_bundle.hbc'),
+              // NOTE: plain JS bundle is used because loading hermes_bundle.hbc from
+              // rawfile fails with "Buffer misaligned" on the emulator. Revisit HBC
+              // (faster startup) before release.
+              new ResourceJSBundleProvider(this.rnohCoreContext.uiAbilityContext.resourceManager, 'bundle.harmony.js'),
             ]) :
-            /**
-             * NOTE: The HBC format is recommended for Hermes in a production environment. HBC provides better performance and loading times.
-             */
-            new ResourceJSBundleProvider(this.rnohCoreContext.uiAbilityContext.resourceManager, 'hermes_bundle.hbc'),
+            new ResourceJSBundleProvider(this.rnohCoreContext.uiAbilityContext.resourceManager, 'bundle.harmony.js'),
         })
       }
     }
