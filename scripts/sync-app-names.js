@@ -18,6 +18,29 @@ const iosLocaleMap = {
   'no': 'nb',  // Norwegian
 };
 
+// HarmonyOS qualifier mapping. Qualifier directories combine
+// language_script_country with underscores (e.g. zh_CN, zh_Hant_TW).
+const harmonyLocaleMap = {
+  'en': 'en_US',
+  'ko': 'ko_KR',
+  'ja': 'ja_JP',
+  'zh': 'zh_CN',
+  'pt': 'pt_PT',
+  'pt-BR': 'pt_BR',
+  'no': 'nb_NO',
+  'he': 'he_IL',
+  'id': 'id_ID',
+  'cs': 'cs_CZ',
+  'el': 'el_GR',
+  'da': 'da_DK',
+  'sv': 'sv_SE',
+  'uk': 'uk_UA',
+  'vi': 'vi_VN',
+  'hi': 'hi_IN',
+  'ms': 'ms_MY',
+  'sq': 'sq_AL',
+};
+
 async function loadTranslation(lang) {
   const translationPath = path.join(__dirname, '..', 'src', 'i18n', 'translations', `${lang}.ts`);
   
@@ -174,17 +197,69 @@ async function updateIOSLocalizations() {
   }
 }
 
+function writeHarmonyStringFile(filePath, strings) {
+  const content = JSON.stringify({ string: strings }, null, 2) + '\n';
+  fs.writeFileSync(filePath, content, 'utf8');
+}
+
+async function updateHarmonyResources() {
+  console.log('\nUpdating HarmonyOS string resources...');
+
+  const languages = [
+    'en', 'ko', 'ja', 'zh', 'es', 'fr', 'de', 'pt', 'pt-BR', 'ru',
+    'ar', 'hi', 'it', 'nl', 'tr', 'pl', 'sv', 'vi', 'th', 'id',
+    'ms', 'uk', 'he', 'el', 'cs', 'hu', 'ro', 'sk', 'hr', 'ca',
+    'fi', 'da', 'no', 'bg', 'lt', 'lv', 'et', 'sl', 'is', 'mt', 'sq'
+  ];
+
+  const appScopeRes = path.join(__dirname, '..', 'harmony', 'AppScope', 'resources');
+  const entryRes = path.join(__dirname, '..', 'harmony', 'entry', 'src', 'main', 'resources');
+
+  for (const lang of languages) {
+    const appTitle = await loadTranslation(lang);
+
+    if (!appTitle) {
+      console.warn(`No translation found for ${lang}`);
+      continue;
+    }
+
+    const qualifiers = [harmonyLocaleMap[lang] || lang];
+    // Chinese also ships a Traditional variant, matching Android/iOS behaviour
+    if (lang === 'zh') qualifiers.push('zh_Hant_TW');
+
+    for (const qualifier of qualifiers) {
+      const appScopeDir = path.join(appScopeRes, qualifier, 'element');
+      fs.mkdirSync(appScopeDir, { recursive: true });
+      writeHarmonyStringFile(path.join(appScopeDir, 'string.json'), [
+        { name: 'app_name', value: appTitle },
+      ]);
+
+      const entryDir = path.join(entryRes, qualifier, 'element');
+      fs.mkdirSync(entryDir, { recursive: true });
+      writeHarmonyStringFile(path.join(entryDir, 'string.json'), [
+        { name: 'module_desc', value: '' },
+        { name: 'EntryAbility_desc', value: '' },
+        { name: 'EntryAbility_label', value: appTitle },
+      ]);
+
+      console.log(`Updated: harmony ${qualifier}/element/string.json`);
+    }
+  }
+}
+
 async function main() {
   console.log('Syncing app names from translations to native resources...\n');
-  
+
   try {
     await updateAndroidStrings();
     await updateIOSLocalizations();
-    
+    await updateHarmonyResources();
+
     console.log('\n✅ Sync completed successfully!');
     console.log('\nNote: You may need to rebuild the apps for changes to take effect:');
     console.log('  Android: npm run android');
     console.log('  iOS: cd ios && pod install && cd .. && npm run ios');
+    console.log('  HarmonyOS: rebuild in DevEco Studio');
   } catch (error) {
     console.error('❌ Error during sync:', error);
     process.exit(1);

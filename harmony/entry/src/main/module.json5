@@ -5,22 +5,16 @@
     "description": "$string:module_desc",
     "mainElement": "EntryAbility",
     "deviceTypes": [
-      "default"
+      "default",
+      "tablet"
     ],
     "deliveryWithInstall": true,
     "installationFree": false,
     "pages": "$profile:main_pages",
-    // This is needed by bundleManager.canOpenLink to check if the app can open some url
-    "querySchemes": [
-      "maps",
-      "http",
-      "https",
-      "customDomain"
-    ],
+    // NOTE: ohos.permission.INTERNET is intentionally NOT requested — the app is
+    // submitted to AppGallery as a standalone (offline) app and network access
+    // would fail the review. Re-add it temporarily if you need Metro hot reload.
     "requestPermissions": [
-      {
-        "name": "ohos.permission.INTERNET"
-      },
       {
         "name": "ohos.permission.VIBRATE"
       }

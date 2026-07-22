@@ -14,3 +14,6 @@
 hvigorw
 hvigorw.bat
 hvigor/hvigor-wrapper.js
+
+# local signing material (never commit)
+signing/
