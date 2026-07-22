@@ -20,25 +20,14 @@ const iosLocaleMap = {
 
 // HarmonyOS qualifier mapping. Qualifier directories combine
 // language_script_country with underscores (e.g. zh_CN, zh_Hant_TW).
+// Like Android/iOS above we use the bare language code so a qualifier matches
+// every region using it (de -> DE/AT/CH); only Chinese and Portuguese need
+// script/region variants.
+// Portuguese stays a bare `pt` so it covers pt-PT and pt-BR alike (there is no
+// separate pt-BR translation).
 const harmonyLocaleMap = {
-  'en': 'en_US',
-  'ko': 'ko_KR',
-  'ja': 'ja_JP',
   'zh': 'zh_CN',
-  'pt': 'pt_PT',
-  'pt-BR': 'pt_BR',
-  'no': 'nb_NO',
-  'he': 'he_IL',
-  'id': 'id_ID',
-  'cs': 'cs_CZ',
-  'el': 'el_GR',
-  'da': 'da_DK',
-  'sv': 'sv_SE',
-  'uk': 'uk_UA',
-  'vi': 'vi_VN',
-  'hi': 'hi_IN',
-  'ms': 'ms_MY',
-  'sq': 'sq_AL',
+  'no': 'nb',  // Norwegian Bokmal, matching Android values-nb / iOS nb.lproj
 };
 
 async function loadTranslation(lang) {
