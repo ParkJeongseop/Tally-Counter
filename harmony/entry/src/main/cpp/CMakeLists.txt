@@ -21,6 +21,16 @@ add_subdirectory("${OH_MODULES_DIR}/@react-native-ohos/async-storage/src/main/cp
 add_subdirectory("${OH_MODULES_DIR}/@react-native-ohos/react-native-safe-area-context/src/main/cpp" ./safe_area)
 add_subdirectory("${OH_MODULES_DIR}/@react-native-ohos/react-native-localize/src/main/cpp" ./rn_localize)
 
+# These libraries link against `rnoh`, which is an INTERFACE target expanding to
+# rnoh_core/rnoh_core_package. That expansion does not give ninja a build-order
+# edge, so a parallel build can link them before librnoh_core.so exists
+# ("no such file or directory: librnoh_core.so"). Force the ordering.
+foreach(manual_lib rnoh_async_storage rnoh_safe_area rnoh_localize)
+    if(TARGET ${manual_lib})
+        add_dependencies(${manual_lib} rnoh_core rnoh_core_package)
+    endif()
+endforeach()
+
 file(GLOB GENERATED_CPP_FILES "${CMAKE_CURRENT_SOURCE_DIR}/generated/*.cpp") # this line is needed by codegen v1
 add_library(rnoh_app SHARED
     ${GENERATED_CPP_FILES}
