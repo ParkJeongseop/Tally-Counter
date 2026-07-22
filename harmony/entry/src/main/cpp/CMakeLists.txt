@@ -21,13 +21,22 @@ add_subdirectory("${OH_MODULES_DIR}/@react-native-ohos/async-storage/src/main/cp
 add_subdirectory("${OH_MODULES_DIR}/@react-native-ohos/react-native-safe-area-context/src/main/cpp" ./safe_area)
 add_subdirectory("${OH_MODULES_DIR}/@react-native-ohos/react-native-localize/src/main/cpp" ./rn_localize)
 
-# These libraries link against `rnoh`, which is an INTERFACE target expanding to
-# rnoh_core/rnoh_core_package. That expansion does not give ninja a build-order
-# edge, so a parallel build can link them before librnoh_core.so exists
-# ("no such file or directory: librnoh_core.so"). Force the ordering.
+# These libraries link against `rnoh`, an INTERFACE target that expands to the
+# shared libs below. That expansion gives ninja no build-order edge, so a
+# parallel build can link them too early and fail with "cannot open
+# librnoh_core.so / libreactnative.so: No such file or directory".
+#
+# RNOH also runs a `separate_all_debug_symbols` custom target that rewrites those
+# .so files in place (objcopy). Linking against a .so while it is being rewritten
+# fails the same way, so wait for that target too — it is the actual race here.
 foreach(manual_lib rnoh_async_storage rnoh_safe_area rnoh_localize)
     if(TARGET ${manual_lib})
-        add_dependencies(${manual_lib} rnoh_core rnoh_core_package)
+        foreach(rnoh_dep rnoh_core rnoh_core_package reactnative jsi hermestooling
+                         separate_all_debug_symbols)
+            if(TARGET ${rnoh_dep})
+                add_dependencies(${manual_lib} ${rnoh_dep})
+            endif()
+        endforeach()
     endif()
 endforeach()
 
