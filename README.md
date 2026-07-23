@@ -2,6 +2,20 @@
 
 A simple and elegant physical tally counter app built with React Native. Count anything using on-screen buttons or hardware volume buttons.
 
+## Download
+
+[<img src="https://play.google.com/intl/en_us/badges/static/images/badges/en_badge_web_generic.png" alt="Get it on Google Play" height="60">](https://play.google.com/store/apps/details?id=com.parkjeongseop.tallycounter)
+[<img src="https://tools.applemediaservices.com/api/badges/download-on-the-app-store/black/en-us" alt="Download on the App Store" height="41">](https://apps.apple.com/kr/app/physical-tally-counter/id6751624376)
+
+- **Google Play**: https://play.google.com/store/apps/details?id=com.parkjeongseop.tallycounter
+- **App Store**: https://apps.apple.com/kr/app/physical-tally-counter/id6751624376
+
+## Screenshots
+
+| Counter | History | Goal Setting |
+|:---:|:---:|:---:|
+| ![Counter screen](fastlane/screenshots_android/en-US/01_CounterScreen.png) | ![History screen](fastlane/screenshots_android/en-US/02_HistoryScreen.png) | ![Goal setting screen](fastlane/screenshots_android/en-US/03_GoalSetting.png) |
+
 ## Features
 
 - 📱 Clean, modern UI with gradient design
@@ -13,7 +27,7 @@ A simple and elegant physical tally counter app built with React Native. Count a
 
 ## Tech Stack
 
-- **React Native** 0.76.6
+- **React Native** 0.80
 - **TypeScript** - Type safety and better DX
 - **AsyncStorage** - Persistent data storage
 - **React Native Safe Area Context** - Handle device safe areas
@@ -66,8 +80,8 @@ src/
 
 1. Clone the repository:
 ```bash
-git clone https://github.com/yourusername/PhysicalTallyCounter.git
-cd PhysicalTallyCounter
+git clone https://github.com/ParkJeongseop/Tally-Counter.git
+cd Tally-Counter
 ```
 
 2. Install dependencies:
