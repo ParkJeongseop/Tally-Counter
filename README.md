@@ -14,7 +14,7 @@ A simple and elegant physical tally counter app built with React Native. Count a
 
 | Counter | History | Goal Setting |
 |:---:|:---:|:---:|
-| ![Counter screen](fastlane/screenshots_android/en-US/01_CounterScreen.png) | ![History screen](fastlane/screenshots_android/en-US/02_HistoryScreen.png) | ![Goal setting screen](fastlane/screenshots_android/en-US/03_GoalSetting.png) |
+| ![Counter screen](docs/screenshots/01_CounterScreen.png) | ![History screen](docs/screenshots/02_HistoryScreen.png) | ![Goal setting screen](docs/screenshots/03_GoalSetting.png) |
 
 ## Features
 
